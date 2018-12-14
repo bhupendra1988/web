@@ -1,0 +1,25 @@
+---
+### provision AWS EC2 instance
+- hosts: all
+##connection: local
+  gather_facts: false
+##  user: centos
+##  become: yes
+  tasks:
+    - name: Provision {{ ec2_count }} instances with tag {{ ec2_tag_Role }}
+      local_action:
+        module: ec2
+        key_name: bhupendra-N-Virginia-key
+        group_id: sg-039680786261690c0
+        instance_type: t2.micro
+        image: ami-04f734233df18b7cd
+        vpc_subnet_id: subnet-cba42ee6
+        region: us-east-1
+        assign_public_ip: yes
+        wait: true
+        count: 1
+        volumes:
+          - device_name: /dev/xvda
+            volume_type: gp2
+            volume_size: 8
+            delete_on_termination: true

@@ -1,0 +1,10 @@
+---
+### Start AWS EC2 instance
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: start ec2
+      ec2:
+        state: 'running'
+        instance_ids: i-03cefb84fce70c54b
+        region: us-east-1

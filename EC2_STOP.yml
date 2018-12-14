@@ -1,0 +1,10 @@
+---
+### Stop AWS EC2 instance
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: stop ec2
+      ec2:
+        state: 'stopped'
+        instance_ids: i-03cefb84fce70c54b
+        region: us-east-1
