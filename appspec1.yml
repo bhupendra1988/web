@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: / 
+    destination: /opt/tomcat/apache-tomcat-7.0.92/webapps
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/start_sessions.sh
+      timeout: 300
