@@ -1,0 +1,9 @@
+---
+### Stop AWS EC2 instance
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: install httpd service
+      yum:
+        name: httpd
+        state: present
